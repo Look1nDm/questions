@@ -1,16 +1,16 @@
-package services;
+package courswork.two.questions.services;
 
-import model.Question;
-import org.springframework.stereotype.Service;
+import courswork.two.questions.exceptions.QuestionsIsLessThanDesired;
+import courswork.two.questions.model.Question;
 
 import java.util.*;
 
-@Service
+
 public class JavaQuestionService implements QuestionService {
-    private final Set<Question> questions;
+    private final Set<Question> questionsAndAnswer;
 
     public JavaQuestionService() {
-        this.questions = new HashSet<>(Set.of(
+        this.questionsAndAnswer = new HashSet<>(Set.of(
                 new Question("К какому типу переменных относится byte?", "Тип byte относится к примитивному типу."),
                 new Question("Верно ли определение полиморфизма: " +
                         "возможность применения одноименных методов " +
@@ -39,32 +39,35 @@ public class JavaQuestionService implements QuestionService {
                         " описан процесс установки и начала работы, а также разобрана структура файла описания проекта.")));
     }
 
+
     @Override
     public Question add(String question, String answer) {
-        Question q = new Question(question, answer);
-        questions.add(q);
+        Question q = new Question(question,answer);
+        questionsAndAnswer.add(q);
         return q;
     }
 
     @Override
-    public Question add(Question question) {
-        return null;
-    }
-
-    @Override
     public Question remove(String question, String answer) {
-        return null;
+        Question q = new Question(question,answer);
+        questionsAndAnswer.remove(q);
+        return q;
     }
 
     @Override
     public Collection<Question> getAll() {
-        return questions;
+        return new HashSet<>(questionsAndAnswer);
     }
-
-    @Override
-    public Question getRandomQuestion() {
-        List<Question> list = new ArrayList<>();
-
-        return null;
+    public Question getRandomQuestion(int amount){ // возвращаем случайны вопрос
+            if (questionsAndAnswer.size()>=amount) {
+                Random random = new Random();
+                int randomInt = random.nextInt(0, amount);
+                return convertToList().get(randomInt);
+            } else{
+                throw new QuestionsIsLessThanDesired("Невозможно сгенерировать столько вопросов!");
+            }
+    }
+    public List<Question> convertToList(){
+        return new ArrayList<>(questionsAndAnswer);
     }
 }

@@ -1,6 +1,6 @@
-package services;
+package courswork.two.questions.services;
 
-import model.Question;
+import courswork.two.questions.model.Question;
 
 import java.util.List;
 

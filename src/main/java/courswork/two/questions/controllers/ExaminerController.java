@@ -1,9 +1,10 @@
-package controllers;
+package courswork.two.questions.controllers;
 
-import model.Question;
+import courswork.two.questions.model.Question;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import services.ExaminerService;
+import courswork.two.questions.services.ExaminerService;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class ExaminerController {
         this.examinerService = examinerService;
     }
 
-    @GetMapping(path = "/")
+    @GetMapping(path = "/get")
     public List<Question> listQuestions (int amount){
         return examinerService.getQuestions(amount);
     }
