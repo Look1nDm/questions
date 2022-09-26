@@ -1,11 +1,11 @@
 package courswork.two.questions.controllers;
 
 import courswork.two.questions.model.Question;
+import courswork.two.questions.services.QuestionService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import courswork.two.questions.services.QuestionService;
 
 import java.util.Collection;
 
@@ -15,8 +15,8 @@ import java.util.Collection;
 public class JavaQuestionController {
     private final QuestionService questionService;
 
-    public JavaQuestionController(QuestionService service) {
-        this.questionService = service;
+    public JavaQuestionController(QuestionService questionService) {
+        this.questionService = questionService;
     }
 
     @GetMapping

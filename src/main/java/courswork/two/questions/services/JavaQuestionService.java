@@ -1,11 +1,12 @@
 package courswork.two.questions.services;
 
-import courswork.two.questions.exceptions.QuestionsIsLessThanDesired;
+import courswork.two.questions.exceptions.QuestionsIsLessThanDesiredException;
 import courswork.two.questions.model.Question;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-
+@Service
 public class JavaQuestionService implements QuestionService {
     private final Set<Question> questionsAndAnswer;
 
@@ -64,7 +65,7 @@ public class JavaQuestionService implements QuestionService {
                 int randomInt = random.nextInt(0, amount);
                 return convertToList().get(randomInt);
             } else{
-                throw new QuestionsIsLessThanDesired("Невозможно сгенерировать столько вопросов!");
+                throw new QuestionsIsLessThanDesiredException("Невозможно сгенерировать столько вопросов!");
             }
     }
     public List<Question> convertToList(){
