@@ -9,10 +9,9 @@ import java.util.List;
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
     private final QuestionService questionService;
-    private final List<Question> list;
+    private final List<Question> list = new ArrayList<>();
     public ExaminerServiceImpl(QuestionService questionService) {
         this.questionService = questionService;
-        this.list = new ArrayList<>();
     }
     @Override
     public List<Question> getQuestions(int amount) {
