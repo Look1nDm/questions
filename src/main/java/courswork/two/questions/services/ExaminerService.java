@@ -2,8 +2,8 @@ package courswork.two.questions.services;
 
 import courswork.two.questions.model.Question;
 
-import java.util.List;
+import java.util.Set;
 
 public interface ExaminerService {
-    List<Question> getQuestions(int amount);
+    Set<Question> getQuestions(int amount);
 }

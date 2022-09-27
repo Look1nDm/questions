@@ -40,35 +40,36 @@ public class JavaQuestionService implements QuestionService {
                         " описан процесс установки и начала работы, а также разобрана структура файла описания проекта.")));
     }
 
-
     @Override
     public Question add(String question, String answer) {
-        Question q = new Question(question,answer);
-        questionsAndAnswer.add(q);
-        return q;
+        Question questionNew = new Question(question, answer);
+        questionsAndAnswer.add(questionNew);
+        return questionNew;
     }
 
     @Override
     public Question remove(String question, String answer) {
-        Question q = new Question(question,answer);
-        questionsAndAnswer.remove(q);
-        return q;
+        Question questionDelete = new Question(question, answer);
+        questionsAndAnswer.remove(questionDelete);
+        return questionDelete;
     }
 
     @Override
     public Collection<Question> getAll() {
         return new HashSet<>(questionsAndAnswer);
     }
-    public Question getRandomQuestion(int amount){ // возвращаем случайны вопрос
-            if (questionsAndAnswer.size()>=amount) {
-                Random random = new Random();
-                int randomInt = random.nextInt(0, amount);
-                return convertToList().get(randomInt);
-            } else{
-                throw new QuestionsIsLessThanDesiredException("Невозможно сгенерировать столько вопросов!");
-            }
+
+    public Question getRandomQuestion(int amount) { // возвращаем случайны вопрос
+        if (questionsAndAnswer.size() >= amount) {
+            Random random = new Random();
+            int randomInt = random.nextInt(0, amount);
+            return convertToList().get(randomInt);
+        } else {
+            throw new QuestionsIsLessThanDesiredException("Невозможно сгенерировать столько вопросов!");
+        }
     }
-    public List<Question> convertToList(){
+
+    public List<Question> convertToList() {
         return new ArrayList<>(questionsAndAnswer);
     }
 }

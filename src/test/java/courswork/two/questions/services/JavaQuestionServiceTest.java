@@ -1,9 +1,8 @@
 package courswork.two.questions.services;
 
+import courswork.two.questions.exceptions.QuestionsIsLessThanDesiredException;
 import courswork.two.questions.model.Question;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -77,7 +76,7 @@ class JavaQuestionServiceTest {
 
     @Test
     void getRandomQuestionThrowException() {
-        assertThrows(RuntimeException.class,()->javaService.
+        assertThrows(QuestionsIsLessThanDesiredException.class,()->javaService.
                 getRandomQuestion(javaService.getAll().size()+1));
     }
 }

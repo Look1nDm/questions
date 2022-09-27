@@ -10,7 +10,9 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,8 +44,8 @@ class ExaminerServiceImplTest {
 
     @Test
     void getQuestions() {
-        List<Question> actualList = examService.getQuestions(2);
-        List<Question> listTest = new ArrayList<>(List.of(
+        Set<Question> actualList = examService.getQuestions(2);
+        Set<Question> listTest = new HashSet<>(List.of(
                 new Question("К какому типу переменных относится byte?",
                         "Тип byte относится к примитивному типу."),
                 new Question("Верно ли определение полиморфизма: " +

@@ -3,26 +3,24 @@ package courswork.two.questions.services;
 import courswork.two.questions.model.Question;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
     private final QuestionService questionService;
-    private final List<Question> list = new ArrayList<>();
+    private final Set<Question> set = new HashSet<>();
+
     public ExaminerServiceImpl(QuestionService questionService) {
         this.questionService = questionService;
     }
+
     @Override
-    public List<Question> getQuestions(int amount) {
-        for(int i = 0; i<=amount;i++) {
+    public Set<Question> getQuestions(int amount) {
+        for (int i = 0; i <= amount; i++) {
             Question q = questionService.getRandomQuestion(amount);
-            if (!checkQuestions(q))
-                list.add(q);
+                set.add(q);
         }
-        return list;
-    }
-    public boolean checkQuestions(Question q){
-        return list.contains(q);
+        return set;
     }
 }
