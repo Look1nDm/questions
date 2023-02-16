@@ -2,10 +2,7 @@ package courswork.two.questions.controllers;
 
 import courswork.two.questions.model.Question;
 import courswork.two.questions.services.QuestionService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -28,7 +25,7 @@ public class JavaQuestionController {
         return questionService.add(question, answer);
     }
 
-    @GetMapping(path = "/remove")
+    @DeleteMapping(path = "/remove")
     public Question removeQuestion(@RequestParam String question, @RequestParam String answer) {
         return questionService.remove(question,answer);
     }
